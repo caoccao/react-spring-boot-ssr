@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SsrController {
-    @GetMapping("/demo")
+    @GetMapping("/render")
     public String render() {
         try {
             return "Hello SSR!";
