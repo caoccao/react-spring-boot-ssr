@@ -4,7 +4,7 @@ import { App } from '@/App'
 
 export function render(componentName: string, propertiesString: string) {
   let Component
-  const props = JSON.parse(propertiesString)
+  const props = propertiesString ? JSON.parse(propertiesString) : {}
   switch (componentName) {
     case 'App':
       Component = App
