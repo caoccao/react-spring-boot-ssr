@@ -31,6 +31,9 @@ export default defineConfig({
     environment: 'happy-dom',
     setupFiles: './src/setup-test.ts',
   },
+  ssr: {
+    noExternal: true,
+  },
   build: {
     sourcemap: true,
     target: 'esnext',
@@ -41,11 +44,6 @@ export default defineConfig({
     modulePreload: true,
     rollupOptions: {
       preserveEntrySignatures: 'strict',
-      input: {
-        index: './src/App/index.ts',
-        render: './src/render.tsx',
-        html: './index.html',
-      },
       output: {
         entryFileNames: `assets/[name].js`,
         chunkFileNames: `assets/[name].js`,

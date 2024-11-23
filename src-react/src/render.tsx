@@ -1,4 +1,4 @@
-import React from 'react'
+import { StrictMode } from 'react'
 import ReactDOMServer from 'react-dom/server'
 
 import { App } from './App'
@@ -14,8 +14,8 @@ export function render(componentName: string, propertiesString: string) {
       throw new Error(`Unknown component: ${componentName}`)
   }
   return ReactDOMServer.renderToString(
-    <React.Fragment>
+    <StrictMode>
       <Component {...props} />
-    </React.Fragment>,
+    </StrictMode>,
   )
 }

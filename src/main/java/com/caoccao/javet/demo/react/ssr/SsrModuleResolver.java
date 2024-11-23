@@ -11,6 +11,7 @@ import com.caoccao.javet.swc4j.exceptions.Swc4jCoreException;
 import com.caoccao.javet.swc4j.options.Swc4jTranspileOptions;
 import com.caoccao.javet.swc4j.outputs.Swc4jTranspileOutput;
 import com.caoccao.javet.swc4j.utils.SimpleList;
+import com.caoccao.javet.swc4j.utils.SimpleSet;
 import com.caoccao.javet.values.reference.IV8Module;
 
 import java.io.File;
@@ -20,8 +21,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class SsrModuleResolver extends JavetBuiltInModuleResolver {
+    protected static final Set<String> BUILT_IN_MODULES = SimpleSet.immutableOf(
+            "stream", "util");
+
     protected static final List<MediaTypeAndExt> MEDIA_TYPE_AND_EXTS = SimpleList.immutableOf(
             new MediaTypeAndExt(Swc4jMediaType.JavaScript, ""),
             new MediaTypeAndExt(Swc4jMediaType.JavaScript, ".js"),
@@ -76,6 +81,9 @@ public class SsrModuleResolver extends JavetBuiltInModuleResolver {
 
     @Override
     public IV8Module resolve(V8Runtime v8Runtime, String resourceName, IV8Module v8ModuleReferrer) throws JavetException {
+        if (BUILT_IN_MODULES.contains(resourceName)) {
+            resourceName = "node:" + resourceName;
+        }
         System.out.println("Resolving " + resourceName);
         IV8Module iV8Module = super.resolve(v8Runtime, resourceName, v8ModuleReferrer);
         if (iV8Module == null) {
