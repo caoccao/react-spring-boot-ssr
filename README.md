@@ -1,2 +1,3 @@
 # react-spring-boot-ssr
-An SSR demo of React + Spring Boot with Javet
+
+This project is an SSR demo of React + Spring Boot with Javet
