@@ -1,6 +1,7 @@
+import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
-import { App } from '@/App'
+import { App } from './App'
 
 export function render(componentName: string, propertiesString: string) {
   let Component
@@ -12,5 +13,9 @@ export function render(componentName: string, propertiesString: string) {
     default:
       throw new Error(`Unknown component: ${componentName}`)
   }
-  return ReactDOMServer.renderToString(<Component {...props} />)
+  return ReactDOMServer.renderToString(
+    <React.Fragment>
+      <Component {...props} />
+    </React.Fragment>,
+  )
 }

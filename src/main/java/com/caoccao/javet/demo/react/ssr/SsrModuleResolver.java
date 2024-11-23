@@ -44,7 +44,7 @@ public class SsrModuleResolver extends JavetBuiltInModuleResolver {
             Path path) throws JavetException {
         File file = path.toFile();
         if (file.exists()) {
-            System.out.println(path);
+            System.out.println("  " + path);
             String codeString;
             try {
                 codeString = Files.readString(path, StandardCharsets.UTF_8);
@@ -76,6 +76,7 @@ public class SsrModuleResolver extends JavetBuiltInModuleResolver {
 
     @Override
     public IV8Module resolve(V8Runtime v8Runtime, String resourceName, IV8Module v8ModuleReferrer) throws JavetException {
+        System.out.println("Resolving " + resourceName);
         IV8Module iV8Module = super.resolve(v8Runtime, resourceName, v8ModuleReferrer);
         if (iV8Module == null) {
             Path relativeRootPath = rootPath;

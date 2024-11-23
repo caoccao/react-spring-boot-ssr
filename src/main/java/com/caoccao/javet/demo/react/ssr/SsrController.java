@@ -17,6 +17,9 @@ public class SsrController {
         try (NodeRuntime nodeRuntime = V8Host.getNodeI18nInstance().createV8Runtime()) {
             Path rootPath = Path.of(JavetOSUtils.WORKING_DIRECTORY, "src-react", "dist", "assets");
             nodeRuntime.setV8ModuleResolver(new SsrModuleResolver(rootPath));
+            nodeRuntime.getExecutor("process.on('unhandledRejection', (reason, promise) => {\n" +
+                    "    console.log('Unhandled Rejection at:', promise, 'reason:', reason);\n" +
+                    "});").executeVoid();
             String codeString = "import { render } from './render.js';\n" +
                     "render('App');";
             try (V8ValuePromise v8ValuePromise = nodeRuntime.getExecutor(codeString)

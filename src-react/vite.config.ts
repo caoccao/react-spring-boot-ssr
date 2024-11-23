@@ -15,7 +15,7 @@ export default defineConfig({
   envDir: './env/',
   plugins: [
     react(),
-    qrcode(),
+    // qrcode(),
     compression({
       algorithm: 'gzip',
       exclude: [/\.(br)$/, /\.(gz)$/],
