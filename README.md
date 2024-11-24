@@ -1,6 +1,6 @@
 # react-spring-boot-ssr
 
-This project is an SSR demo of React + Spring Boot with Javet
+This project is an SSR demo of React + Spring Boot with Javet. The complete introduction to this project is in this blog [post](https://blog.caoccao.com/ssr-react-spring-boot-with-javet-536282ff0edb).
 
 ## Development
 
