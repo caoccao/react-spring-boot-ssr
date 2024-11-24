@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "vite --host",
     "start": "vite --host",
-    "build": "tsc && vite build --ssr src/render.tsx",
+    "build": "tsc && vite build --out-dir dist/build",
+    "build-ssr": "tsc && vite build --out-dir dist/build-ssr --ssr src/render.tsx",
     "preview": "vite preview --host",
     "test": "vitest",
     "treemap": "vite-bundle-visualizer --open --template=treemap --output='./dist/treemap.html'",

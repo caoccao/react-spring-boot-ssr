@@ -19,7 +19,7 @@ import java.nio.file.Path;
 public class SsrController {
     protected static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(SsrController.class);
     protected static final Path ROOT_PATH =
-            Path.of(JavetOSUtils.WORKING_DIRECTORY, "src-react", "dist", "assets").normalize();
+            Path.of(JavetOSUtils.WORKING_DIRECTORY, "src-react", "dist", "build-ssr", "assets").normalize();
 
     static {
         NodeRuntimeOptions.NODE_FLAGS.setExperimentalRequireModule(true);

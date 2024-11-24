@@ -6,7 +6,6 @@ import com.caoccao.javet.interop.callback.JavetBuiltInModuleResolver;
 import com.caoccao.javet.values.reference.IV8Module;
 import org.slf4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -30,6 +29,7 @@ public final class SsrModuleResolver extends JavetBuiltInModuleResolver {
 
     @Override
     public IV8Module resolve(V8Runtime v8Runtime, String resourceName, IV8Module v8ModuleReferrer) throws JavetException {
+        // Normalize built-in modules.
         if (BUILT_IN_MODULES.contains(resourceName)) {
             resourceName = "node:" + resourceName;
         }
@@ -41,8 +41,7 @@ public final class SsrModuleResolver extends JavetBuiltInModuleResolver {
                 relativeRootPath = Path.of(v8ModuleReferrer.getResourceName()).getParent();
             }
             Path resourcePath = relativeRootPath.resolve(resourceName).normalize();
-            File resourceFile = resourcePath.toFile();
-            if (resourceFile.exists()) {
+            if (resourcePath.toFile().exists()) {
                 try {
                     String codeString = Files.readString(resourcePath, StandardCharsets.UTF_8);
                     iV8Module = v8Runtime
