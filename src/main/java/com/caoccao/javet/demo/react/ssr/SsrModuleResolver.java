@@ -40,10 +40,13 @@ public final class SsrModuleResolver extends JavetBuiltInModuleResolver {
             if (v8ModuleReferrer != null) {
                 relativeRootPath = Path.of(v8ModuleReferrer.getResourceName()).getParent();
             }
+            // Resolve the actual resource path.
             Path resourcePath = relativeRootPath.resolve(resourceName).normalize();
             if (resourcePath.toFile().exists()) {
                 try {
+                    // Read the module source code.
                     String codeString = Files.readString(resourcePath, StandardCharsets.UTF_8);
+                    // Compile the module.
                     iV8Module = v8Runtime
                             .getExecutor(codeString)
                             .setResourceName(resourcePath.toString())
