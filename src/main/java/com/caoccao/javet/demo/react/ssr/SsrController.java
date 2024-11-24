@@ -45,7 +45,7 @@ public class SsrController {
         try (NodeRuntime nodeRuntime = V8Host.getNodeI18nInstance().createV8Runtime()) {
             nodeRuntime.setV8ModuleResolver(new SsrModuleResolver(ROOT_PATH));
             nodeRuntime.getExecutor("process.on('unhandledRejection', (reason, promise) => {\n" +
-                    "    console.log('Unhandled Rejection at:', promise, 'reason:', reason);\n" +
+                    "    console.error('Unhandled Rejection at:', promise, 'reason:', reason);\n" +
                     "});").executeVoid();
             String codeString = "import { render } from './render.js';\n" +
                     "globalThis.html = render('App');";
