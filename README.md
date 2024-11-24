@@ -1,6 +1,8 @@
 # react-spring-boot-ssr
 
-This project is an SSR demo of React + Spring Boot with Javet. The complete introduction to this project is in this blog [post](https://blog.caoccao.com/ssr-react-spring-boot-with-javet-536282ff0edb).
+This project is an SSR demo of React + Spring Boot with Javet.
+
+The complete introduction to this project is in this blog [post](https://blog.caoccao.com/ssr-react-spring-boot-with-javet-536282ff0edb).
 
 ## Development
 
@@ -35,3 +37,5 @@ pnpm build-ssr
 * Visit the following URL in your browser
   * [Render by CJS](http://localhost:8080/render-by-cjs)
   * [Render by ESM](http://localhost:8080/render-by-esm)
+
+![SSR Preview](docs/images/ssr.preview.png)
