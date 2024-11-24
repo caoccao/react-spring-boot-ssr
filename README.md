@@ -21,11 +21,12 @@ cd src-react
 pnpm dev
 ```
 
-### Build SSR
+### Build
 
 ```bash
 cd src-react
 pnpm build
+pnpm build-ssr
 ```
 
 ## Test
