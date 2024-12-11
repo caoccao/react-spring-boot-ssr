@@ -2,7 +2,6 @@ package com.caoccao.javet.demo.react.ssr;
 
 import com.caoccao.javet.interop.NodeRuntime;
 import com.caoccao.javet.interop.V8Host;
-import com.caoccao.javet.interop.options.NodeRuntimeOptions;
 import com.caoccao.javet.node.modules.NodeModuleAny;
 import com.caoccao.javet.node.modules.NodeModuleModule;
 import com.caoccao.javet.node.modules.NodeModuleProcess;
@@ -19,10 +18,6 @@ public class SsrController {
     protected static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(SsrController.class);
     protected static final Path ROOT_PATH =
             Path.of(System.getProperty("user.dir"), "src-react", "dist", "build-ssr", "assets").normalize();
-
-    static {
-        NodeRuntimeOptions.NODE_FLAGS.setExperimentalRequireModule(true);
-    }
 
     @GetMapping("/render-by-cjs")
     public String renderByCjs() {

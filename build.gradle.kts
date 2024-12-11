@@ -30,8 +30,8 @@ dependencies {
         if (os.isMacOsX) "macos" else
             if (os.isLinux) "linux" else ""
     val archType = if (arch == "aarch64" || arch == "arm64") "arm64" else "x86_64"
-    implementation("com.caoccao.javet:javet:4.1.0")
-    implementation("com.caoccao.javet:javet-node-$osType-$archType-i18n:4.1.0")
+    implementation("com.caoccao.javet:javet:4.1.1")
+    implementation("com.caoccao.javet:javet-node-$osType-$archType-i18n:4.1.1")
 }
 
 tasks.withType<Test> {
