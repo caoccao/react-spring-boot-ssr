@@ -42,7 +42,7 @@
     "node": "^22.x",
     "npm": "!^x",
     "yarn": "!^x",
-    "pnpm": "^9.x",
+    "pnpm": "^10.x",
     "bun": "^1.1.x"
   },
   "dependencies": {
